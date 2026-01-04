@@ -44,6 +44,18 @@ function App() {
     );
   };
 
+  //----------------------------------------------------------------------------------------------------------------------
+  const createNewNote=()=>{
+      const newnote = {
+        id: Date.now(),
+        title:"no title",
+        content: "no content",
+        tag: activeTag,
+      }
+      setNotes((prev) =>[newnote, ...prev]);
+      setSelectedNote(newNote);
+  }
+
   const filteredNotes = notes.filter((note) => note.tag === activeTag);
 
   useEffect(() => {
@@ -75,6 +87,9 @@ function App() {
 
       {/* NOTES LIST */}
       <section className="notes-panel">
+        <button className="add-button" onClick={createNewNote}>
+       + New Note
+        </button>
         {filteredNotes.map((note) => (
           <div
             key={note.id}

@@ -10,7 +10,13 @@ function EditorContainer({ note, onSave }) {
     if (note) {
       setTitle(note.title);
       setContent(note.content);
-      setIsOpen(false);
+
+      if(note.content === "" && note.title===""){
+        setIsOpen(true);
+      }else{
+        setIsOpen(false);
+      }
+      
     }
   }, [note]);
 
